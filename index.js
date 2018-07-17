@@ -9,25 +9,31 @@ function setup() {
 
 
 function draw() {
+    frameRate(0)
     const hapticonOnColor = '#FF5733'
     const hapticonOffColor = 80
-    const { values } = HAPTICONS[0]
-    frameRate(0)
-    let x = 25
+    const height = 10
     const scale = 0.1
-    values.forEach((val,i) => {
-        if (i % 2 === 0) {
-            fill(hapticonOnColor)
-        } else {
-            if (i === values.length - 1) {
-                return
+    let y = 10
+
+    HAPTICONS.forEach((hapticon, id) => {
+        console.log(y)
+        const { values } = hapticon
+        let x = 25
+        values.forEach((val, i) => {
+            if (i % 2 === 0) {
+                fill(hapticonOnColor)
+            } else {
+                if (i === values.length - 1) {
+                    return
+                }
+                fill(hapticonOffColor)
             }
-            fill(hapticonOffColor)
-        }
-        console.log(x, val)
-        rect(x, 10, val * scale, 10)
-        fill(0, 255, 0)
-        ellipse(x, 20, 4, 4) //TODO: Remove before deploy
-        x = Math.round(x + (val * scale))
+            rect(x, y, val * scale, height)
+            fill(0, 255, 0)
+            ellipse(x, y + height, 4, 4) //TODO: Remove before deploy
+            x = Math.round(x + (val * scale))
+        })
+        y = y + 20
     })
 }
