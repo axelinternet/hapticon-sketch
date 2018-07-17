@@ -27,7 +27,7 @@ function draw() {
         console.log(x, val)
         rect(x, 10, val * scale, 10)
         fill(0, 255, 0)
-        ellipse(x, 20, 4, 4)
+        ellipse(x, 20, 4, 4) //TODO: Remove before deploy
         x = Math.round(x + (val * scale))
     })
 }
