@@ -1,0 +1,8 @@
+{
+  "name": "hapticon-sketch",
+  "version": "1.0.0",
+  "description": "Visualize navigator.vibrate() arrays with p5",
+  "main": "index.js",
+  "author": "axelinternet <axel@hultman.info>",
+  "license": "MIT"
+}
