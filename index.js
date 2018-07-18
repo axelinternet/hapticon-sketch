@@ -1,39 +1,42 @@
+const rc = rough.canvas(document.getElementById('canvas'));
+const ctx = document.getElementById('canvas')
+console.log(ctx.width)
+ctx.width = window.innerWidth - 200
+ctx.height = window.innerHeight * 0.90
+console.log(ctx)
+const hapticonOnColor = '#696969'
+const hapticonOffColor = '#fff'
+const height = 20
+const scale = 0.150 
+let y = 20
+let fill = {}
 
-function setup() {
-    noStroke()
-    const width = 800
-    const cnv = createCanvas(width, 480)
-    cnv.parent('sketch__canvas')
-    background(255)
-}
 
+rc.rectangle(4, 4, window.innerWidth - 210, window.innerHeight * 0.88, {
+    fill: '#fff',
+    fillStyle: 'solid'
+})
 
-function draw() {
-    frameRate(0)
-    const hapticonOnColor = '#FF5733'
-    const hapticonOffColor = 80
-    const height = 10
-    const scale = 0.1
-    let y = 10
-
-    HAPTICONS.forEach((hapticon, id) => {
-        console.log(y)
-        const { values } = hapticon
-        let x = 25
-        values.forEach((val, i) => {
-            if (i % 2 === 0) {
-                fill(hapticonOnColor)
-            } else {
-                if (i === values.length - 1) {
-                    return
-                }
-                fill(hapticonOffColor)
+HAPTICONS.forEach((hapticon, id) => {
+    const { values } = hapticon
+    let x = 25
+    values.forEach((val, i) => {
+        if (i % 2 === 0) {
+            fill = {
+                fill: hapticonOnColor,
+                fillStyle: 'solid'
             }
-            rect(x, y, val * scale, height)
-            fill(0, 255, 0)
-            ellipse(x, y + height, 4, 4) //TODO: Remove before deploy
-            x = Math.round(x + (val * scale))
-        })
-        y = y + 20
+        } else {
+            if (i === values.length - 1) {
+                return
+            }
+            fill = {
+                fill: hapticonOffColor,
+                fillStyle: 'solid'
+            }
+        }
+        rc.rectangle(x, y, val * scale, height, fill)
+        x = Math.round(x + (val * scale))
     })
-}
+    y = y + 50
+})
