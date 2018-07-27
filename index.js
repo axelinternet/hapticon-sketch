@@ -11,16 +11,14 @@ const scale = 0.150
 let y = 20
 let fill = {}
 
-
-
-
 rc.rectangle(4, 4, window.innerWidth - 210, window.innerHeight * 0.88, {
     fill: '#fff',
-    fillStyle: 'solid'
+    fillStyle: 'solid',
+    stroke: '#fff'
 })
 
-HAPTICONS.forEach((hapticon, id) => {
 
+HAPTICONS.forEach((hapticon, id) => {
     const { values } = hapticon
     let x = 50
     values.forEach((val, i) => {
@@ -52,3 +50,14 @@ for (let i = 0; i < 16; i++) {
     context.fillText(i, 25, texty)
     texty += 50
 }
+
+context.fillRect(50, 830, 1500, 1)
+
+let tx = 0
+for (let i = 50; i < 1500; i += 150) {
+    context.fillRect(i, 810, 2, 40)
+    context.fillText(tx, i, 880)
+    tx += 1
+}
+
+context.fillText('[s]', 1500, 880)
