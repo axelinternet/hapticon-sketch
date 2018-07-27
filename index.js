@@ -1,15 +1,17 @@
 const rc = rough.canvas(document.getElementById('canvas'));
+
 const ctx = document.getElementById('canvas')
-console.log(ctx.width)
 ctx.width = window.innerWidth - 200
 ctx.height = window.innerHeight * 0.90
-console.log(ctx)
 const hapticonOnColor = '#696969'
+
 const hapticonOffColor = '#fff'
 const height = 20
 const scale = 0.150 
 let y = 20
 let fill = {}
+
+
 
 
 rc.rectangle(4, 4, window.innerWidth - 210, window.innerHeight * 0.88, {
@@ -18,8 +20,9 @@ rc.rectangle(4, 4, window.innerWidth - 210, window.innerHeight * 0.88, {
 })
 
 HAPTICONS.forEach((hapticon, id) => {
+
     const { values } = hapticon
-    let x = 25
+    let x = 50
     values.forEach((val, i) => {
         if (i % 2 === 0) {
             fill = {
@@ -40,3 +43,12 @@ HAPTICONS.forEach((hapticon, id) => {
     })
     y = y + 50
 })
+
+const context = ctx.getContext('2d')
+context.font = '24px serif'
+context.textAlign = 'center'
+let texty = 38
+for (let i = 0; i < 16; i++) {
+    context.fillText(i, 25, texty)
+    texty += 50
+}
