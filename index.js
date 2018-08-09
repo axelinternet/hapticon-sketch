@@ -60,4 +60,4 @@ for (let i = 50; i < 1500; i += 150) {
     tx += 1
 }
 
-context.fillText('[s]', 1500, 880)
+context.fillText('t [s]', 1500, 880)
